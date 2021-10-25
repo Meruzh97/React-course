@@ -1,0 +1,32 @@
+.person img{
+    margin-top: 1em;
+    display: block;
+    overflow: hidden;
+    object-fit: cover;
+    background-size: cover;
+  }
+  
+  .person{
+    display: flex;
+    justify-content: start;
+    align-items:flex-start;
+    flex-direction: row;
+  }
+  
+  .person__name{
+    font-size: 24px;
+    line-height: 0;
+  }
+  
+  .person__information{
+    margin-left: 40px;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  
+  .person__text{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
+  }

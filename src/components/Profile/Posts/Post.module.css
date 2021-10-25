@@ -1,0 +1,35 @@
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  /* отображаем курсор в виде руки при наведении; некоторые
+  считают, что необходимо оставлять стрелочный вид для кнопок */
+  cursor: pointer;
+}
+
+.posts {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.posts__item span {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+.posts__item {
+  display: flex;
+  align-items: center;
+  vertical-align: top;
+  margin-bottom: 70px;
+}
+.posts__item p {
+  display: inline-block;
+  margin-left: 35px;
+  line-height: 0;
+}

@@ -1,0 +1,28 @@
+.nav{
+  grid-area: n;
+  background-color: green;
+  
+}
+
+.nav__list{
+  list-style-type: none;
+  font-size: 26px;
+  margin-left: -20px;
+}
+
+.nav__list li:last-child{
+  margin-top: 25px;
+}
+
+.nav__list li a{
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav__list li a:active{
+  color: gold;
+}
+
+.nav__list li a.active{
+  color: gold;
+}
