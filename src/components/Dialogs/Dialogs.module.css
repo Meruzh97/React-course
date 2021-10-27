@@ -19,7 +19,8 @@
 .dialogs__item{
     font-weight: 300;
     font-size: 26px;
-    padding: 15px;
+    padding: 15px 15px 15px 11px;
+    list-style-type: none;
 }
 
 .messages{
@@ -29,4 +30,12 @@
 .dialogs__item .active{
     background-repeat: no-repeat;
     font-weight: 500;
+}
+
+.ava{
+    color: #fff;
+    background-color: #000;
+    border-radius: 50%;
+    padding: 4px 6px 8px 6px;
+    margin-right: 20px;
 }

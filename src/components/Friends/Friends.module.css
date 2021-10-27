@@ -1,0 +1,14 @@
+.friendsList{
+    list-style-type: none;
+    display: grid;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.header{
+    font-size: 32px;
+    font-weight: normal;
+    margin-bottom: 35px;
+}

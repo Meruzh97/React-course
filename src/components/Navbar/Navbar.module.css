@@ -10,7 +10,7 @@
   margin-left: -20px;
 }
 
-.nav__list li:last-child{
+.nav__list li.settings{
   margin-top: 25px;
 }
 
@@ -25,4 +25,9 @@
 
 .nav__list li a.active{
   color: gold;
+}
+
+.friends{
+  margin-top: 70px;
+  color: #fff;
 }

@@ -3,41 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import state from "./redux/state"
+import {addPost} from "./redux/state"
 
 
-let dialogsData = [
-  { id: 1, name: "Viktor" },
-  { id: 2, name: "Dmitry" },
-  { id: 3, name: "Sasha" },
-  { id: 4, name: "Sveta" },
-  { id: 5, name: "Valera" },
-  { id: 6, name: "Andrew" },
-  { id: 7, name: "Victoria" },
-  { id: 8, name: "Ruslan" },
-  { id: 9, name: "Elena" },
-  { id: 10, name: "Antonio" },
-];
+export let rerenderEntireTree = () =>  {
+  ReactDOM.render(
+    <React.StrictMode>
+      <App state={state}  addPost={addPost}/>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+}
 
-  let messagesData = [
-  { id: 1, message: "Hi" },
-  { id: 2, message: "How are you?" },
-  { id: 3, message: "What's app man" },
-];
-
-
-let postData = [
-  { id: 1, message: "Hey, why nobody love me?" },
-  { id: 1, message: "It's our new program! Hey!" },
-];
-
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App dialogsData={dialogsData} messagesData={messagesData} postData={postData} />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
+rerenderEntireTree()
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

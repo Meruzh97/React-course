@@ -7,6 +7,7 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
+import Friends from "./components/Friends/Friends";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
 
@@ -15,7 +16,7 @@ function App(props) {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Navbar />
+        <Navbar friendsData={props.state.navbar.friends} />
         <div className="content">
           {/* СНАЧАЛА МЫ ВРУЧНУЮ ПИСАЛИ КОМПОНЕНТУ, А ДРУГУЮ КОМЕНТИЛИ, ЧТОБЫ ОДНА ОТОБРАЖАЛАСЬ */}
           {/* <Dialogs /> */}
@@ -25,11 +26,12 @@ function App(props) {
               <Route path='/dialogs' component={Dialogs} />
                            ..................             */}
           {/* теперь мы юзаем render, чтобы иметь возможность юзать пропсы */}
-          <Route path='/profile' render={ () => <Profile postData={props.postData} />} />
-          <Route path='/dialogs' render={ () => <Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData}/>} />
+          <Route path='/profile' render={ () => <Profile postData={props.state.profilePage.posts} addPost={props.addPost} />} />
+          <Route path='/dialogs' render={ () => <Dialogs dialogsData={props.state.dialogsPage.dialogs} messagesData={props.state.dialogsPage.messages}/>} />
           <Route path='/settings' render={ () => <Settings />} />
           <Route path='/news' render={ () => <News />} />
           <Route path='/music' render={ () => <Music />} />
+          {/* <Route path='/friends' render={ () => <Friends friendsData={props.state.navbar.friends} />} /> */}
         </div>
       </div>
     </BrowserRouter>
