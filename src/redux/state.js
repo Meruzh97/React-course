@@ -1,12 +1,12 @@
 import { rerenderEntireTree } from "../render"
 
-
 let state = {
   profilePage: {
     posts: [
       { id: 0, message: "Hey, why nobody love me?" },
       { id: 1, message: "It's our new program! Hey!" },
     ],
+    newPostText: "",
   },
   dialogsPage: {
     dialogs: [
@@ -40,15 +40,16 @@ let state = {
   },
 };
 
-
-export let addPost = (postMessage) => {
-  // debugger;
-  // let newPost = { id: 2, message: postMessage };
-  state.profilePage.posts.push({ id: 2, message: postMessage });
-  rerenderEntireTree(state, addPost)
+Window.prototype.state = state;
+export let addPost = () => {
+  state.profilePage.posts.push({ id: 2, message: state.profilePage.newPostText });
+  state.profilePage.newPostText = ""
+  rerenderEntireTree(state, addPost, updateNewPostText)
 };
 
-// let newPost = { id: 2, message: postMessage };
-// let newPost = new Object({}, { id: 2, message: postMessage })
+export let updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText;
+  rerenderEntireTree(state, addPost, updateNewPostText);
+};
 
 export default state;

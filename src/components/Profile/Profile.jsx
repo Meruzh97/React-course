@@ -16,7 +16,7 @@ const Profile = (props) => {
       <Content__img />
       <Person />
       <div className={classes.posts}>
-        <MyPosts addPost={props.addPost} />
+        <MyPosts addPost={props.addPost} newPostText={props.newPostText} updateNewPostText={props.updateNewPostText}/>
         <div className={classes.posts__items}>
           {postDataElements}
           {/* <Post message={postData[0].message}/> */}
