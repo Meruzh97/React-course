@@ -18,15 +18,7 @@ function App(props) {
         <Header />
         <Navbar friendsData={props.state.navbar.friends} />
         <div className="content">
-          {/* СНАЧАЛА МЫ ВРУЧНУЮ ПИСАЛИ КОМПОНЕНТУ, А ДРУГУЮ КОМЕНТИЛИ, ЧТОБЫ ОДНА ОТОБРАЖАЛАСЬ */}
-          {/* <Dialogs /> */}
-          {/* <Profile /> */}
-          {/* ЗАТЕМ МЫ ПОЗНАКОМИЛИСЬ С BROWSERROUTER, ЗАЮЗАЛИ РОУТЫ С component, где мы просто передавали компоненту */}
-          {/* <Route path='/profile' component={Profile} />
-              <Route path='/dialogs' component={Dialogs} />
-                           ..................             */}
-          {/* теперь мы юзаем render, чтобы иметь возможность юзать пропсы */}
-          <Route path='/profile' render={ () => <Profile postData={props.state.profilePage.posts} addPost={props.addPost} newPostText={props.state.profilePage.newPostText} updateNewPostText={props.updateNewPostText}/>} />
+          <Route path='/profile' render={ () => <Profile dispatch={props.dispatch} state={props.state}/>} />
           <Route path='/dialogs' render={ () => <Dialogs dialogsData={props.state.dialogsPage.dialogs} messagesData={props.state.dialogsPage.messages}/>} />
           <Route path='/settings' render={ () => <Settings />} />
           <Route path='/news' render={ () => <News />} />

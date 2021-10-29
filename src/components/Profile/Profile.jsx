@@ -7,7 +7,7 @@ import classes from "./Profile.module.css";
 
 const Profile = (props) => {
   
-  let postDataElements = props.postData.map( p => (
+  let postDataElements = props.state.profilePage.posts.map( p => (
     <Post message={p.message} />
   ));
 
@@ -16,7 +16,7 @@ const Profile = (props) => {
       <Content__img />
       <Person />
       <div className={classes.posts}>
-        <MyPosts addPost={props.addPost} newPostText={props.newPostText} updateNewPostText={props.updateNewPostText}/>
+        <MyPosts dispatch={props.dispatch} state={props.state}/>
         <div className={classes.posts__items}>
           {postDataElements}
           {/* <Post message={postData[0].message}/> */}

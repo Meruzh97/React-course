@@ -1,3 +1,18 @@
+export const addPostActionCreator = () => {
+  return {
+    type: 'ADDPOST'
+  }
+}
+
+export const updateNewPostTextActionCreator = (text) => {
+  return {
+    type: 'UPDATENEWPOSTTEXT',
+    newText: text
+  }
+}
+
+
+
 let store = {
   _state: {
     profilePage: {
@@ -41,22 +56,38 @@ let store = {
   _callSubscriber(){
     console.log('changed')
   },
-  addPost(){
+  _addPost(){
     this._state.profilePage.posts.push({ id: 2, message: this._state.profilePage.newPostText });
     this._state.profilePage.newPostText = ""
     this._callSubscriber()
   },
-  updateNewPostText(newText){
+  _updateNewPostText(newText){
     this._state.profilePage.newPostText = newText;
     this._callSubscriber();
   },
-  subscribe(observer){
+  _subscribe(observer){
     this._callSubscriber = observer;
   },
   getState(){
     return this._state;
+  },
+  dispatch(action) {
+    if (action.type === '_CALLSUBSCRIBER') {
+      this._callSubscriber()
+    }
+    else if(action.type === 'SUBSCRIBE') {
+      this._subscribe();
+    }
+    else if (action.type === 'ADDPOST'){
+        this._state.profilePage.posts.push({ id: 2, message: this._state.profilePage.newPostText });
+        this._state.profilePage.newPostText = ""
+        this._callSubscriber()
+    } else if(action.type === 'UPDATENEWPOSTTEXT'){
+      this._state.profilePage.newPostText = action.newText;
+      this._callSubscriber()
+    }
   }
-};
+}
 
 Window.prototype.store = store;
 
