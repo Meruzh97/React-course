@@ -1,12 +1,7 @@
-export const addPostActionCreator = () => ({type: 'ADDPOST'})
+import dialogsReducer from "./dialogs-reducer"
+import profileReducer from "./profile-reducer"
+import navbarReducer from "./navbar-reducer"
 
-export const addMessageActionCreator = () => ({type: 'ADDMESSAGE'})
-
-export const updateNewPostTextActionCreator = (text) => 
-({ type: 'UPDATENEWPOSTTEXT', newText: text })
-
-export const updateNewMessageTextActionCreator = (text) => 
-({ type: 'UPDATENEWMESSAGETEXT', newText: text })
 
 let store = {
   _state: {
@@ -78,29 +73,11 @@ let store = {
     return this._state;
   },
   dispatch(action) {
-    if (action.type === '_CALLSUBSCRIBER') {
-      this._callSubscriber()
-    }
-    else if(action.type === 'SUBSCRIBE') {
-      this._subscribe();
-    }
-    else if (action.type === 'ADDPOST'){
-        // this._state.profilePage.posts.push({ id: 2, message: this._state.profilePage.newPostText });
-        // this._state.profilePage.newPostText = ""
-        // this._callSubscriber()
-        this._addPost()
-    } 
-    else if (action.type === 'ADDMESSAGE'){
-        this._addMessage();
-    } 
-    else if(action.type === 'UPDATENEWPOSTTEXT'){
-      // this._state.profilePage.newPostText = action.newText;
-      // this._callSubscriber()
-      this._updateNewPostText(action.newText)
-    }
-    else if(action.type === 'UPDATENEWMESSAGETEXT'){
-      this._updateNewMessageText(action.newText)
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._state.navbar = navbarReducer(this._state.navbar, action);
+
+    this._callSubscriber();
   }
 }
 
