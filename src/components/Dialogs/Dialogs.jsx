@@ -2,10 +2,10 @@ import React from "react";
 import classes from "./Dialogs.module.css";
 import DialogsItem from "./DialogsItem/DialogsItem";
 import Message from "./Message/Message";
+import {updateNewMessageTextActionCreator, addMessageActionCreator} from './../../redux/state'
 
 
 const Dialogs = (props) => {
-
   let dialogsData = props.dialogsData
   let messagesData = props.messagesData
 
@@ -15,6 +15,19 @@ const Dialogs = (props) => {
   let messagesDataElements = messagesData.map(m => (
     <Message message={m.message} />
   ));
+
+
+    //input adding
+    let onMessageChange = (e) => {
+      let text = e.target.value
+      props.dispatch(updateNewMessageTextActionCreator(text))
+    }
+
+    let addMessage = () => {
+      props.dispatch(addMessageActionCreator())
+    }
+
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.dialogs}>
@@ -30,6 +43,12 @@ const Dialogs = (props) => {
         </ul>
       </div>
       <ul className={classes.messages}>{messagesDataElements}</ul>
+      <div>
+      <input value={props.state.dialogsPage.newMessageText} onChange={onMessageChange} type="text" placeholder="your message..." />
+      </div>
+      <button onClick={addMessage} type='submit'>
+        Send
+      </button>{" "}
     </div>
   );
 };

@@ -19,7 +19,7 @@ function App(props) {
         <Navbar friendsData={props.state.navbar.friends} />
         <div className="content">
           <Route path='/profile' render={ () => <Profile dispatch={props.dispatch} state={props.state}/>} />
-          <Route path='/dialogs' render={ () => <Dialogs dialogsData={props.state.dialogsPage.dialogs} messagesData={props.state.dialogsPage.messages}/>} />
+          <Route path='/dialogs' render={ () => <Dialogs dispatch={props.dispatch} state={props.state} dialogsData={props.state.dialogsPage.dialogs} messagesData={props.state.dialogsPage.messages}/>} />
           <Route path='/settings' render={ () => <Settings />} />
           <Route path='/news' render={ () => <News />} />
           <Route path='/music' render={ () => <Music />} />

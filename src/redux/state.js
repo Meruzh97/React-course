@@ -1,17 +1,12 @@
-export const addPostActionCreator = () => {
-  return {
-    type: 'ADDPOST'
-  }
-}
+export const addPostActionCreator = () => ({type: 'ADDPOST'})
 
-export const updateNewPostTextActionCreator = (text) => {
-  return {
-    type: 'UPDATENEWPOSTTEXT',
-    newText: text
-  }
-}
+export const addMessageActionCreator = () => ({type: 'ADDMESSAGE'})
 
+export const updateNewPostTextActionCreator = (text) => 
+({ type: 'UPDATENEWPOSTTEXT', newText: text })
 
+export const updateNewMessageTextActionCreator = (text) => 
+({ type: 'UPDATENEWMESSAGETEXT', newText: text })
 
 let store = {
   _state: {
@@ -37,10 +32,11 @@ let store = {
       ],
   
       messages: [
-        { id: 1, message: "Hi" },
-        { id: 2, message: "How are you?" },
-        { id: 3, message: "What's app man" },
+        { id: 0, message: "Hi" },
+        { id: 1, message: "How are you?" },
+        { id: 2, message: "What's app man" },
       ],
+      newMessageText: "",
     },
     navbar: {
       friends: [
@@ -61,8 +57,18 @@ let store = {
     this._state.profilePage.newPostText = ""
     this._callSubscriber()
   },
+  _addMessage(){
+    let body = this._state.dialogsPage.newMessageText
+    this._state.dialogsPage.newMessageText = ""
+    this._state.dialogsPage.messages.push({ id: 3, message: body });
+    this._callSubscriber()
+  },
   _updateNewPostText(newText){
     this._state.profilePage.newPostText = newText;
+    this._callSubscriber();
+  },
+  _updateNewMessageText(newText){
+    this._state.dialogsPage.newMessageText = newText;
     this._callSubscriber();
   },
   _subscribe(observer){
@@ -79,12 +85,21 @@ let store = {
       this._subscribe();
     }
     else if (action.type === 'ADDPOST'){
-        this._state.profilePage.posts.push({ id: 2, message: this._state.profilePage.newPostText });
-        this._state.profilePage.newPostText = ""
-        this._callSubscriber()
-    } else if(action.type === 'UPDATENEWPOSTTEXT'){
-      this._state.profilePage.newPostText = action.newText;
-      this._callSubscriber()
+        // this._state.profilePage.posts.push({ id: 2, message: this._state.profilePage.newPostText });
+        // this._state.profilePage.newPostText = ""
+        // this._callSubscriber()
+        this._addPost()
+    } 
+    else if (action.type === 'ADDMESSAGE'){
+        this._addMessage();
+    } 
+    else if(action.type === 'UPDATENEWPOSTTEXT'){
+      // this._state.profilePage.newPostText = action.newText;
+      // this._callSubscriber()
+      this._updateNewPostText(action.newText)
+    }
+    else if(action.type === 'UPDATENEWMESSAGETEXT'){
+      this._updateNewMessageText(action.newText)
     }
   }
 }
