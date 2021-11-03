@@ -47,25 +47,6 @@ let store = {
   _callSubscriber(){
     console.log('changed')
   },
-  _addPost(){
-    this._state.profilePage.posts.push({ id: 2, message: this._state.profilePage.newPostText });
-    this._state.profilePage.newPostText = ""
-    this._callSubscriber()
-  },
-  _addMessage(){
-    let body = this._state.dialogsPage.newMessageText
-    this._state.dialogsPage.newMessageText = ""
-    this._state.dialogsPage.messages.push({ id: 3, message: body });
-    this._callSubscriber()
-  },
-  _updateNewPostText(newText){
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber();
-  },
-  _updateNewMessageText(newText){
-    this._state.dialogsPage.newMessageText = newText;
-    this._callSubscriber();
-  },
   _subscribe(observer){
     this._callSubscriber = observer;
   },
