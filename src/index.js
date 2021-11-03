@@ -8,7 +8,7 @@ import App from './App';
 export let rerenderEntireTree = () =>  {
   ReactDOM.render(
     <React.StrictMode>
-      <App dispatch={store.dispatch.bind(store)} state={store.getState()}/>
+      <App dispatch={store.dispatch.bind(store)} state={store.getState()} store={store}/>
     </React.StrictMode>,
     document.getElementById('root')
   );

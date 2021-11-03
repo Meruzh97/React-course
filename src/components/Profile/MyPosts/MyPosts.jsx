@@ -1,30 +1,25 @@
 import React from "react";
 import classes from "./MyPosts.module.css";
-import {addPostActionCreator, updateNewPostTextActionCreator} from './../../../redux/profile-reducer'
+
 
 const MyPosts = (props) => {
-  let newPostElement = React.createRef();
-
-  let addPost = () => {
-    props.dispatch(addPostActionCreator())
-  }
-
-  let onInputChange = () => {
-    let text = newPostElement.current.value;
-    props.dispatch(updateNewPostTextActionCreator(text))
-  }
 
   return (
     <div>
       <h2>My posts</h2>
       <div className={classes.posts__input}>
-        <input value={props.state.profilePage.newPostText} onChange={onInputChange} ref={newPostElement} type="text" placeholder="your news..." />
+        <input value={props.newPostText} onChange={props.updateNewPostText}  type="text" placeholder="your news..." />
       </div>
-      <button onClick={addPost} className={classes.button} type="submit">
+      <button onClick={props.addPost} className={classes.button} type="submit">
         Send
       </button>{" "}
+      <div className={classes.posts__items}>
+        {props.postDataElements}
+        {/* <Post message={postData[0].message}/> */}
+        {/* <Post message="It's our new program! Hey!" /> */}
+      </div>
     </div>
   );
 };
 
-export default MyPosts
+export default MyPosts;

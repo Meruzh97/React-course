@@ -27,3 +27,7 @@
   line-height: 1;
   border-radius: 3px;
 }
+
+.posts__items {
+  margin-top: 70px;
+}
