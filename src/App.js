@@ -1,14 +1,14 @@
-import "./App.css";
 import React from "react";
-import Header from "./components/Header/Header.jsx";
-import Navbar from "./components/Navbar/Navbar.jsx";
-import Profile from "./components/Profile/Profile.jsx";
+import { BrowserRouter, Route } from "react-router-dom";
+import "./App.css";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import Settings from "./components/Settings/Settings";
-import News from "./components/News/News";
+import Header from "./components/Header/Header.jsx";
 import Music from "./components/Music/Music";
-import Friends from "./components/Friends/Friends";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar.jsx";
+import News from "./components/News/News";
+import Profile from "./components/Profile/Profile.jsx";
+import Settings from "./components/Settings/Settings";
+import UsersContainer from "./components/Users/UsersContainer";
 
 
 function App(props) {
@@ -24,6 +24,7 @@ function App(props) {
           <Route path='/settings' render={ () => <Settings />} />
           <Route path='/news' render={ () => <News />} />
           <Route path='/music' render={ () => <Music />} />
+          <Route path='/users' render={ () => <UsersContainer />} />
           {/* <Route path='/friends' render={ () => <Friends friendsData={props.state.navbar.friends} />} /> */}
         </div>
       </div>
