@@ -1,10 +1,15 @@
 export const followAC = (userId) => ({type: 'FOLLOW', userId})
 export const unfollowAC = (userId) => ({type: 'UNFOLLOW', userId})
 export const setUsersAC = (users) => ({type: 'SETUSERS', users})
+export const setCurrentPageAC = (currentPage) => ({type: 'SETCURRENTPAGE', currentPage})
+export const setTotalUsersCountAC = (totalCount) => ({type: 'SETTOTALUSERSCOUNT', totalUsersCount:totalCount })
 
 let initialState = {
-    users: []
-  }
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 1
+}
 
 const usersReducer = (state = initialState, action) => {
     switch(action.type){
@@ -33,8 +38,14 @@ const usersReducer = (state = initialState, action) => {
         case 'SETUSERS': {
             return {
                 ...state, 
-                users: [...action.users]
+                users: action.users
             }
+        }
+        case 'SETCURRENTPAGE': {
+            return {...state, currentPage: action.currentPage}
+        }
+        case 'SETTOTALUSERSCOUNT': {
+            return {...state, totalUsersCount: action.totalUsersCount}
         }
         default: return state;
     }

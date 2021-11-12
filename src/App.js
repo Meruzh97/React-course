@@ -19,7 +19,6 @@ function App(props) {
         <Navbar friendsData={props.state.navbar.friends} />
         <div className="content">
           <Route path='/profile' render={ () => <Profile store={props.store}/>} />
-          {/* <Route path='/dialogs' render={ () => <Dialogs dispatch={props.dispatch} state={props.state} dialogsData={props.state.dialogsPage.dialogs} messagesData={props.state.dialogsPage.messages}/>} /> */}
           <Route path='/dialogs' render={ () => <DialogsContainer store={props.store}/>} />
           <Route path='/settings' render={ () => <Settings />} />
           <Route path='/news' render={ () => <News />} />
