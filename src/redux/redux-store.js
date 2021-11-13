@@ -13,4 +13,6 @@ let reducers = combineReducers({
 
 let store = createStore(reducers);
 
+// Window.prototype.store = store;
+
 export default store;

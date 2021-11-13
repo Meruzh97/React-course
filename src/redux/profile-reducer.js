@@ -1,6 +1,7 @@
-export const addPostActionCreator = () => ({type: 'ADDPOST'})
-export const updateNewPostTextActionCreator = (text) => 
-({ type: 'UPDATENEWPOSTTEXT', newText: text })
+export const addPostActionCreator = () => ({type: 'ADDPOST'});
+export const updateNewPostTextActionCreator = (text) => ({ type: 'UPDATENEWPOSTTEXT', newText: text });
+export const setProfile = (profile) => ({ type: 'SETPROFILE', profile });
+
 
 let initialState = {
     posts: [
@@ -8,6 +9,7 @@ let initialState = {
       { id: 1, message: "It's our new program! Hey!" },
     ],
     newPostText: "",
+    profile: null
   }
 
 const profileReducer = (state = initialState, action) => {
@@ -26,8 +28,22 @@ const profileReducer = (state = initialState, action) => {
             stateCopy.newPostText = action.newText;
             return stateCopy;
         }
+        case 'SETPROFILE': {
+            return {
+                ...state,
+                profile: action.profile
+            }
+        }
         default: return state;
     }
 }
 
 export default profileReducer;
+
+
+
+// {
+//     let stateCopy = {...state}
+//     profile = action.profile;
+//     return stateCopy;
+// }

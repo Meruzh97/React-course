@@ -3,7 +3,6 @@ import { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, preload
 import Users from './Users'
 import * as axios from 'axios';
 import React from 'react';
-import loader from '../../assets/images/loader.gif';
 import Preloader from '../common/preloader/Preloader.jsx';
 
 class UsersContainer extends React.Component {
@@ -29,7 +28,10 @@ class UsersContainer extends React.Component {
 
 
   render(){
-      return <> <Preloader isFetching={this.props.isFetching} preloader={loader} />
+      return <> 
+              {this.props.isFetching
+              ? <Preloader />
+              : null}
               <Users
               totalUsersCount={this.props.totalUsersCount}
               pageSize={this.props.pageSize}
