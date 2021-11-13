@@ -18,7 +18,7 @@ function App(props) {
         <Header />
         <Navbar friendsData={props.state.navbar.friends} />
         <div className="content">
-          <Route path='/profile' render={ () => <ProfileContainer/>} />
+          <Route path='/profile/:userId?' render={ () => <ProfileContainer/>} />
           <Route path='/dialogs' render={ () => <DialogsContainer store={props.store}/>} />
           <Route path='/settings' render={ () => <Settings />} />
           <Route path='/news' render={ () => <News />} />
