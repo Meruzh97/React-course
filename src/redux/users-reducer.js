@@ -1,9 +1,9 @@
-export const followAC = (userId) => ({type: 'FOLLOW', userId})
-export const unfollowAC = (userId) => ({type: 'UNFOLLOW', userId})
-export const setUsersAC = (users) => ({type: 'SETUSERS', users})
-export const setCurrentPageAC = (currentPage) => ({type: 'SETCURRENTPAGE', currentPage})
-export const setTotalUsersCountAC = (totalCount) => ({type: 'SETTOTALUSERSCOUNT', totalUsersCount:totalCount })
-export const preloaderAC = (isFetching) => ({type: 'PRELOADER', isFetching: isFetching })
+export const follow = (userId) => ({type: 'FOLLOW', userId})
+export const unfollow = (userId) => ({type: 'UNFOLLOW', userId})
+export const setUsers = (users) => ({type: 'SETUSERS', users})
+export const setCurrentPage = (currentPage) => ({type: 'SETCURRENTPAGE', currentPage})
+export const setTotalUsersCount = (totalCount) => ({type: 'SETTOTALUSERSCOUNT', totalUsersCount:totalCount })
+export const preloader = (isFetching) => ({type: 'PRELOADER', isFetching: isFetching })
 
 let initialState = {
     users: [],
