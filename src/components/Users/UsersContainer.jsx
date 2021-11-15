@@ -4,24 +4,24 @@ import Users from './Users'
 import * as axios from 'axios';
 import React from 'react';
 import Preloader from '../common/preloader/Preloader.jsx';
+import {usersApi} from '../../api/api';
 
 class UsersContainer extends React.Component {
 
   componentDidMount(){
       this.props.preloader(true)
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true}).then(r => {
-              this.props.setUsers(r.data.items)
-              this.props.setTotalUsersCount(r.data.totalCount)
+      usersApi.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+              this.props.setUsers(data.items)
+              this.props.setTotalUsersCount(data.totalCount)
               this.props.preloader(false)
-
       })
   }
 
   onPageChanged = (p) => {
       this.props.preloader(true)
       this.props.setCurrentPage(p);
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`, {withCredentials: true}).then(r => {
-          this.props.setUsers(r.data.items)
+      usersApi.getUsers(p, this.props.pageSize).then(data => {
+          this.props.setUsers(data.items)
           this.props.preloader(false)
       })
   }
