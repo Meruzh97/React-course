@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import Header from "./components/Header/Header.jsx";
 import HeaderContainer from "./components/Header/HeaderContainer.jsx";
 import Music from "./components/Music/Music";
 import Navbar from "./components/Navbar/Navbar.jsx";

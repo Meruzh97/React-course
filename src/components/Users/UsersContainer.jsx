@@ -65,28 +65,3 @@ export default connect(mapStateToProps, {
   preloader
 })(UsersContainer);
 
-// const UsersContainer = connect(mapToStateProps, mapToDispatchProps)(UsersAPIComponent);
-// export default UsersContainer; 
-
-// const mapToDispatchProps = (dispatch) => {
-//   return {
-//     follow: (userId) => {
-//       dispatch(followAC(userId))
-//     },
-//     unfollow: (userId) => {
-//       dispatch(unfollowAC(userId))
-//     },
-//     setUsers: (users) => {
-//       dispatch(setUsersAC(users))
-//     },
-//     setCurrentPage: (currentPage) => {
-//       dispatch(setCurrentPageAC(currentPage))
-//     },
-//     setTotalUsersCount: (totalCount) => {
-//       dispatch(setTotalUsersCountAC(totalCount))
-//     },
-//     preloader: (isFetching) => {
-//       dispatch(preloaderAC(isFetching))
-//     }
-//   }
-// }

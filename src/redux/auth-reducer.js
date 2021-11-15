@@ -1,4 +1,4 @@
-export const setAuthData = (id, login, email) => ({ type: 'SETAUTHDATA', data: {id, login, email} });
+export const setAuthData = (id, login, email) => ({ type: 'SETAUTHDATA', id, login, email });
 
 let initialState = {
     id: null,
@@ -11,7 +11,9 @@ const authReducer = (state = initialState, action) => {
         case 'SETAUTHDATA': {
             return {
                 ...state,
-                ...action.data
+                ...action.id,
+                ...action.login,
+                ...action.email
             }
         }
         default: return state;
