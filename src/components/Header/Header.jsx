@@ -1,11 +1,15 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import classes from  './Header.module.css';
 
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header className={classes.header}>
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/2048px-LEGO_logo.svg.png" />
+      {!props.props.id 
+      ? <div className={classes.loginBlock}><NavLink to='/login'>Login</NavLink></div>
+      : <div className={classes.loginBlock}>{props.props.id.login}</div>}
     </header>
   );
 };
